@@ -13,9 +13,6 @@ export default function Home() {
         <link rel="icon" href="#" />
       </Head>
       <h1 className="text-3xl font-bold">Next Tailwind Amazon</h1>
-      <h1 className="text-3xl font-bold">Next Tailwind Amazon</h1>
-      <h1 className="text-3xl font-bold">Next Tailwind Amazon</h1>
-      <h1 className="text-3xl font-bold">Next Tailwind Amazon</h1>
     </div>
   );
 }

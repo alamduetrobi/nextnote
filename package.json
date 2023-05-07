@@ -10,8 +10,8 @@
     "watch": "npx tailwindcss -i src/styles/globals.css -o dist/output.css --watch"
   },
   "dependencies": {
+    "@heroicons/react": "^2.0.17",
     "@types/node": "18.16.3",
-    "@types/react": "18.2.0",
     "@types/react-dom": "18.2.1",
     "autoprefixer": "10.4.14",
     "eslint": "8.39.0",
@@ -24,6 +24,7 @@
     "typescript": "5.0.4"
   },
   "devDependencies": {
+    "@types/react": "^18.2.0",
     "prisma": "^4.13.0"
   }
 }

@@ -4,9 +4,11 @@ import Layout from '../../components/Layout';
 import Link from 'next/link';
 import Image from 'next/image';
 import { XCircleIcon } from '@heroicons/react/outline';
-import { Router } from 'next/router';
+import Router, { useRouter } from 'next/router';
+import dynamic from 'next/dynamic';
 
-const CartSreen = () => {
+function CartSreen() {
+  const { query } = useRouter();
   const { state, dispatch } = useContext(Store);
   const {
     cart: { cartItems },
@@ -16,11 +18,19 @@ const CartSreen = () => {
     dispatch({ type: 'CART_REMOVE_ITEM', payload: item });
   };
 
+  const updateCartHandler = (item, qty) => {
+    const quantity = Number(qty);
+    dispatch({ type: 'CART_ADD_ITEM', payload: { ...item, quantity } });
+  };
+
+  // const updateCartHandler = (item, qty) => {
+  //   const quantity = Number(qty);
+  //   dispatch({ type: 'CART_ADD_ITEM', payload: { ...item, quantity } });
+  // };
+
   return (
     <Layout title="Shoping Cart">
       <h1 className="mb-4 text-xl">Shopping Cart</h1>
-
-      {console.log(cartItems)}
 
       {cartItems.length === 0 ? (
         <div>
@@ -56,7 +66,20 @@ const CartSreen = () => {
                         {item.name}
                       </Link>
                     </td>
-                    <td className="p-5 text-right">{item.quantity}</td>
+                    <td className="p-5 text-right">
+                      <select
+                        value={item.quantity}
+                        onChange={(e) =>
+                          updateCartHandler(item, e.target.value)
+                        }
+                      >
+                        {[...Array(item.countInStock).keys()].map((x) => (
+                          <option key={x + 1} value={x + 1}>
+                            {x + 1}
+                          </option>
+                        ))}
+                      </select>
+                    </td>
                     <td className="p-5 text-right">${item.price}</td>
                     <td className="p-5 text-center">
                       <button onClick={() => removeItemHandler(item)}>X</button>
@@ -76,7 +99,7 @@ const CartSreen = () => {
               </li>
               <li>
                 <button
-                  onClick={() => Router.push('/shipping')}
+                  onClick={() => Router.push('login?redirect=/shipping')}
                   className="primary-button w-full"
                 >
                   Check Out
@@ -88,6 +111,6 @@ const CartSreen = () => {
       )}
     </Layout>
   );
-};
+}
 
-export default CartSreen;
+export default dynamic(() => Promise.resolve(CartSreen), { ssr: false });

@@ -79,7 +79,22 @@ description
    5. create store provider
    6. handle add to cart button
 9. Create Cart Page
+
    1. Create cart.js
    2. use context to get cart itmes
    3. List items in cart items
-   4.    
+
+10. Handle Changing Cart Items
+
+    1. add select box for quantity
+    2. handle select box change
+
+11. Save Cart Items
+
+    1. istall js-cookie package
+    2. save and retreive cart items in cookies
+
+12. Create Login Form
+    1. Install rat hook form
+    2. create input boxes
+    3. add login button

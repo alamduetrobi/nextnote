@@ -1,4 +1,22 @@
+// import bcrypt from 'bcrypt';
+const bcrypt = require('bcrypt');
+
 const dataitem = {
+  users: [
+    {
+      name: 'John',
+      email: 'admin@example.com',
+      password: bcrypt.hashSync('123456', 10),
+      isAdmin: true,
+    },
+    {
+      name: 'Jane',
+      email: 'user@example.com',
+      password: bcrypt.hashSync('123456', 10),
+      isAdmin: false,
+    },
+  ],
+
   products: [
     {
       name: 'Free Shirt',

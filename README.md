@@ -95,6 +95,21 @@ description
     2. save and retreive cart items in cookies
 
 12. Create Login Form
+
     1. Install rat hook form
     2. create input boxes
     3. add login button
+
+13. Connet To MongoDB
+
+    1. install Mongoose
+    2. install Mongodb or use mongodb atlas
+    3. save connection url in .env file
+    4. create db utls file
+    5. create sample users
+
+14. Create Login API
+    1. Install Next-auth
+    2. create nextauth.js
+    3. implement signin
+    4. use signin in login from

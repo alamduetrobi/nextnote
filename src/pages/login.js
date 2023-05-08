@@ -2,14 +2,26 @@ import React from 'react';
 import Layout from '../../components/Layout';
 import Link from 'next/link';
 import { useForm } from 'react-hook-form';
+import { signIn } from 'next-auth/react';
 const LoginScreen = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const submitHandler = (email, password) => {
-    console.log(email, password);
+  const submitHandler = async (email, password) => {
+    try {
+      const result = await signIn('credentails', {
+        redirect: false,
+        email,
+        password,
+      });
+      if (result.error) {
+        toast.error(result.error);
+      }
+    } catch (err) {
+      toast.error(getError(err));
+    }
   };
   return (
     <Layout title="login">
